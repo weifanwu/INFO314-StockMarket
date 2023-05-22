@@ -94,13 +94,13 @@ public class Client1 {
                 information[2] = Integer.parseInt(buy.item(0).getTextContent());
             }
             NodeList sell = rule.getElementsByTagName("sell");
-            // index at 2 represents sell amount, if sell all set it to -1
+            // index at 3 represents sell amount, if sell all set it to -1
             if (sell.getLength() == 0) {
-                information[2] = 0;
+                information[3] = 0;
             } else if (sell.item(0).getTextContent().isEmpty()) {
-                information[2] = -1;
+                information[3] = -1;
             } else {
-                information[2] = Integer.parseInt(sell.item(0).getTextContent());
+                information[3] = Integer.parseInt(sell.item(0).getTextContent());
             }
             rules.put(name, information);
         }
@@ -121,10 +121,10 @@ public class Client1 {
     }
 
     public static Checking check(Map<String, Integer> recording, Map<String, int[]> rules, String symbol, int price) {
-        if (recording.get(symbol) == 0) {
+        if (!rules.containsKey(symbol)) {
             return new Checking(symbol, false, 0);
         }
-        if (!rules.containsKey(symbol)) {
+        if (recording.get(symbol) <= 0) {
             return new Checking(symbol, false, 0);
         }
         int[] information = rules.get(symbol);
@@ -146,10 +146,15 @@ public class Client1 {
             return new Checking(action, true, money);
         } else {
             if (information[3] == 0) {
+                return new Checking("sell", false, 0);
+            } else if (information[3] == -1) {
                 money = recording.get(symbol);
                 action = "sell";
             } else {
                 money = information[3];
+                if (money > recording.get(symbol)) {
+                    return new Checking("sell", false, 0);
+                }
                 action = "sell";
             }
         }

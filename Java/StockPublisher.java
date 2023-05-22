@@ -16,7 +16,7 @@ public class StockPublisher {
 
         System.console().writer().println("Starting stock publisher....");
 
-        StockMarket sm1 = new StockMarket(StockPublisher::publishMessage, "AMZN", "MSFT", "GOOG", "AAPL", "FB", "NFLX", "TSLA");
+        StockMarket sm1 = new StockMarket(StockPublisher::publishMessage, "AMZN", "MSFT", "GOOG", "APPL", "FB", "NFLX", "TSLA");
         new Thread(sm1).start();
         StockMarket sm2 = new StockMarket(StockPublisher::publishMessage, "ACTV", "BLIZ", "ROVIO", "JPM", "BAC", "V", "MA");
         new Thread(sm2).start();
