@@ -24,8 +24,8 @@ public class Client1 {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Map<String, int[]> rules = new HashMap<>();
-        initalizeStrategy(recording, builder, "portfolio1.xml");
-        initalizePortfolio(rules, builder, "strategy1.xml");
+        initalizeStrategy(rules, builder, "strategy1.xml");
+        initalizePortfolio(recording, builder, "portfolio1.xml");
         Connection connection = Nats.connect("nats://127.0.0.1:4222");
         Dispatcher dispatcher = connection.createDispatcher((message) -> {
             try {
