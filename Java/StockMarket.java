@@ -43,7 +43,6 @@ public class StockMarket implements Runnable {
       for (String symbol : symbols) {
         int price = startingPriceRandom.nextInt(10000) + 1000; // min $10.00
         stocks.put(symbol, price);
-        System.out.println(symbol + " " + price(price));
       }
 
       this.publish = publishFn;
@@ -81,4 +80,3 @@ public class StockMarket implements Runnable {
     // Convenient method to transform pennies into USD
     public String price(int price) { return "$" + (price / 100.f); }
 }
-  
