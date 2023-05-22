@@ -13,7 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-public class Client2 {
+public class Kevin {
     public static void main(String[] args) {
         String natsURL = "nats://127.0.0.1:4222";
         try(Connection nc = Nats.connect(natsURL)) {

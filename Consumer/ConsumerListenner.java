@@ -39,7 +39,7 @@ public class ConsumerListenner {
             }
         });
         if (args.length == 0) {
-            dispatcher.subscribe(">");
+            dispatcher.subscribe("company.*");
         } else {
             for (String symbol : args) {
                 dispatcher.subscribe(symbol);

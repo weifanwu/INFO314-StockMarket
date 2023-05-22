@@ -18,7 +18,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-public class Client1 {
+public class Weifan {
     public static void main(String[] args) throws Exception {
         Map<String, Integer> recording = new HashMap<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -163,7 +163,7 @@ public class Client1 {
     }
 
     public static void order(Connection connection, String symbol, String action, int amount) throws Exception {
-        String message = "<order><" + action + " symbol=\"" + symbol + "\" amount=\"" + amount + "\" /></order>";
+        String message = "<order><" + action + " client=\"Weifan\"" + " symbol=\"" + symbol + "\" amount=\"" + amount + "\" /></order>";
         Future<Message> incoming = connection.request("alex", message.getBytes(StandardCharsets.UTF_8));
         Message msg = incoming.get(8, TimeUnit.SECONDS);
         String response = new String(msg.getData(), StandardCharsets.UTF_8);

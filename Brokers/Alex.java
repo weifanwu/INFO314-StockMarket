@@ -14,6 +14,8 @@ import org.w3c.dom.NodeList;
 import java.io.BufferedReader;
 import org.xml.sax.InputSource;
 import java.io.FileReader;
+import java.time.LocalTime;
+
 
 public class Alex {
     public static void main(String[] args) {
@@ -28,15 +30,13 @@ public class Alex {
                     Document doc = builder.parse(new InputSource(new StringReader(message)));
                     NodeList order = doc.getElementsByTagName("buy");
                     String name = "buy";
-                    if (symbol.equals("GOOG")) {
-                        System.out.println("This is the number: " + order.getLength());
-                    }
                     if (order.getLength() == 0) {
                         order = doc.getElementsByTagName("sell");
                         name = "sell";
                     }
                     Element element = (Element) order.item(0);
                     int amount = Integer.parseInt(element.getAttribute("amount"));
+                    String client = element.getAttribute("client");
                     BufferedReader reader = new BufferedReader(new FileReader("../Consumer/" + element.getAttribute("symbol") + "-price.log"));
                     String line;
                     String lastLine = null;
@@ -54,6 +54,8 @@ public class Alex {
                         } else {
                             total = price + deducation;
                         }
+                        SEC security = new SEC(client, "Alex", name, LocalTime.now().toString());
+                        security.check((int) total);
                         String response = "<orderReceipt><" + name + " symbol=\"" + element.getAttribute("symbol") + "\" amount=\"" + amount + "\" /><complete amount=\"" + total + "\" /></orderReceipt>";
                         nc.publish(msg.getReplyTo(), response.getBytes());
                     } else {
