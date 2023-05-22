@@ -1,0 +1,24 @@
+<!-- A very tech-centric strategy -->
+<strategy>
+  <when><stock>MSFT</stock><above>100</above><sell>50</sell></when>
+  <when><stock>AMZN</stock><above>90</above><sell /></when>
+  <when><stock>GOOG</stock><above>80</above><sell>70</sell></when>
+  <when><stock>NFLX</stock><above>70</above><sell /></when>
+  <when><stock>APPL</stock><below>60</below><buy>300</buy></when>
+  <when><stock>FB</stock><below>100</below><buy>500</buy></when>
+  <when><stock>ACTV</stock><below>92</below><buy>500</buy></when>
+  <when><stock>BLIZ</stock><below>95</below><buy>500</buy></when>
+  <when><stock>ROVIO</stock><above>81</above><sell>300</sell></when>
+  <when><stock>JPM</stock><above>40</above><sell /></when>
+  <when><stock>BAC</stock><above>52</above><sell>10</sell></when>
+  <when><stock>V</stock><above>100</above><sell>800</sell></when>
+  <when><stock>MA</stock><below>91</below><buy>600</buy></when>
+  <when><stock>GE</stock><below>23</below><buy>500</buy></when>
+  <when><stock>GMC</stock><below>85</below><buy>500</buy></when>
+  <when><stock>FORD</stock><below>79</below><buy>500</buy></when>
+  <when><stock>IBM</stock><below>100</below><buy>500</buy></when>
+  <when><stock>WMT</stock><below>99</below><buy>500</buy></when>
+  <when><stock>NVDA</stock><below>100</below><buy>500</buy></when>
+  <when><stock>INTC</stock><below>50</below><buy>500</buy></when>
+  <when><stock>TSLA</stock><below>70</below><buy>500</buy></when>
+</strategy>

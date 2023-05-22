@@ -1,0 +1,23 @@
+<portfolio>
+    <stock symbol="NFLX">0</stock>
+    <stock symbol="GOOG">1560</stock>
+    <stock symbol="NVDA">1000</stock>
+    <stock symbol="BLIZ">1000</stock>
+    <stock symbol="BAC">1160</stock>
+    <stock symbol="JPM">0</stock>
+    <stock symbol="MSFT">1400</stock>
+    <stock symbol="TSLA">1000</stock>
+    <stock symbol="MA">1000</stock>
+    <stock symbol="APPL">1000</stock>
+    <stock symbol="IBM">1000</stock>
+    <stock symbol="V">8200</stock>
+    <stock symbol="INTC">1000</stock>
+    <stock symbol="ROVIO">2500</stock>
+    <stock symbol="ACTV">1000</stock>
+    <stock symbol="FORD">1000</stock>
+    <stock symbol="FB">1000</stock>
+    <stock symbol="GMC">1000</stock>
+    <stock symbol="AMZN">0</stock>
+    <stock symbol="GE">1000</stock>
+    <stock symbol="WMT">1000</stock>
+</portfolio>
