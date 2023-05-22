@@ -15,7 +15,8 @@ import java.io.BufferedReader;
 import org.xml.sax.InputSource;
 import java.io.FileReader;
 
-public class Kevin {
+
+public class Jack {
     public static void main(String[] args) {
         String natsURL = "nats://127.0.0.1:4222";
         try {
@@ -34,6 +35,7 @@ public class Kevin {
                     }
                     Element element = (Element) order.item(0);
                     int amount = Integer.parseInt(element.getAttribute("amount"));
+                    String client = element.getAttribute("client");
                     BufferedReader reader = new BufferedReader(new FileReader("../Consumer/" + element.getAttribute("symbol") + "-price.log"));
                     String line;
                     String lastLine = null;
@@ -51,7 +53,9 @@ public class Kevin {
                         } else {
                             total = price + deducation;
                         }
-                        String response = "<orderReceipt><" + name + " symbol=\"" + element.getAttribute("symbol") + "\" amount=\"" + amount + "\" /><complete amount=" + total + " /></orderReceipt>";
+                        SEC security = new SEC(client, "Jack", name, LocalTime.now().toString());
+                        security.check((int) total);
+                        String response = "<orderReceipt><" + name + " symbol=\"" + element.getAttribute("symbol") + "\" amount=\"" + amount + "\" /><complete amount=\"" + total + "\" /></orderReceipt>";
                         nc.publish(msg.getReplyTo(), response.getBytes());
                     } else {
                         System.out.println("The file is empty."); // Handle case when the file is empty
@@ -59,7 +63,7 @@ public class Kevin {
                 } catch(Exception error) {
                     error.printStackTrace();
                 }            });
-            dispatcher.subscribe("Kevin");
+            dispatcher.subscribe("jack");
         } catch(Exception errorException) {
             errorException.printStackTrace();
         }
