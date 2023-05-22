@@ -28,6 +28,9 @@ public class Alex {
                     Document doc = builder.parse(new InputSource(new StringReader(message)));
                     NodeList order = doc.getElementsByTagName("buy");
                     String name = "buy";
+                    if (symbol.equals("GOOG")) {
+                        System.out.println("This is the number: " + order.getLength());
+                    }
                     if (order.getLength() == 0) {
                         order = doc.getElementsByTagName("sell");
                         name = "sell";

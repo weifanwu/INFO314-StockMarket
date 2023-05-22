@@ -54,7 +54,7 @@ public class Client1 {
         dispatcher.subscribe("company.*");
     }
 
-    public static void initalizeStrategy(Map<String, Integer> recording, DocumentBuilder builder, String name) throws Exception {
+    public static void initalizePortfolio(Map<String, Integer> recording, DocumentBuilder builder, String name) throws Exception {
         Document document = builder.parse(name);
         NodeList nodes = document.getElementsByTagName("stock");
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -64,7 +64,7 @@ public class Client1 {
         }
     }
 
-    public static void initalizePortfolio(Map<String, int[]> rules, DocumentBuilder builder, String file) throws Exception {
+    public static void initalizeStrategy(Map<String, int[]> rules, DocumentBuilder builder, String file) throws Exception {
         Document strategy = builder.parse(file);
         NodeList strategies = strategy.getElementsByTagName("when");
         for (int i = 0; i < strategies.getLength(); i++) {
@@ -121,6 +121,9 @@ public class Client1 {
     }
 
     public static Checking check(Map<String, Integer> recording, Map<String, int[]> rules, String symbol, int price) {
+        if (recording.get(symbol) == 0) {
+            return new Checking(symbol, false, 0);
+        }
         if (!rules.containsKey(symbol)) {
             return new Checking(symbol, false, 0);
         }
